@@ -1,0 +1,57 @@
+group 'com.example.flutter_share_sdk'
+version '1.0'
+
+
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "http://mvn.mob.com/android"
+        }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.mob.sdk:MobSDK:+'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'com.mob.sdk'
+
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 16
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+MobSDK {
+    appKey "2d712e88c2b09"
+    appSecret "971e28e4fef0255aecdd16f5d7e08a28"
+    ShareSDK {
+        //平台配置信息
+        devInfo{
+             Wechat {
+                appId "wx56d3cac260ce6694"
+                appSecret "971e28e4fef0255aecdd16f5d7e08a28"
+            }
+        }
+    } 
+}
+
